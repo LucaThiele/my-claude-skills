@@ -1,6 +1,6 @@
 # my-claude-skills
 
-A personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) skills used across my work and personal Macs. 31 skills + 10 slash commands bundled in this repo, plus [gstack](https://github.com/garrytan/gstack) installed alongside as a separate toolchain.
+A personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) skills used across my work and personal Macs. 31 skills bundled in this repo, plus [gstack](https://github.com/garrytan/gstack) installed alongside as a separate toolchain.
 
 ## Naming convention
 
@@ -27,16 +27,15 @@ Skills are prefixed by source so I can always tell where each one comes from. Th
 
 ## Installation
 
-### This bundle (the 31 skills + 10 slash commands in this repo)
+### This bundle (the 31 skills in this repo)
 
 ```bash
 git clone https://github.com/LucaThiele/my-claude-skills.git /tmp/my-skills
-rsync -a --exclude='.git' --exclude='README.md' --exclude='commands' /tmp/my-skills/ ~/.claude/skills/
-rsync -a /tmp/my-skills/commands/ ~/.claude/commands/
+rsync -a --exclude='.git' --exclude='README.md' /tmp/my-skills/ ~/.claude/skills/
 rm -rf /tmp/my-skills
 ```
 
-Skill folders go to `~/.claude/skills/`; the `commands/` directory goes to `~/.claude/commands/` (Claude Code looks in different places for each). Restart Claude Code to pick everything up.
+Restart Claude Code to pick up the skills.
 
 ### gstack (separately)
 
@@ -118,21 +117,6 @@ Some skills require extra tools installed on the host machine:
 | `notion-meeting-intelligence` | Build an internal pre-read + external agenda for a meeting — pulls Notion context, layers in research, links both to the project |
 | `notion-research-documentation` | Cross-page research inside the workspace — synthesize findings from multiple Notion pages into a report with citations |
 | `notion-spec-to-implementation` | Break a Notion spec page into a tracked plan + task rows with bidirectional links between spec, plan, and tasks |
-
-Plus 10 slash commands under the `/notion:*` namespace (sourced from [makenotion/claude-code-notion-plugin](https://github.com/makenotion/claude-code-notion-plugin), installed from `commands/notion/` in this repo):
-
-| Command | What it does |
-|---|---|
-| `/notion:find` | Quick title-based lookup for pages and databases |
-| `/notion:search` | Full-text workspace search |
-| `/notion:create-page` | Create a new page under a given parent |
-| `/notion:create-task` | Create a task in a Tasks-style database |
-| `/notion:create-database-row` | Insert a row in any database |
-| `/notion:database-query` | Query a database by name or ID |
-| `/notion:tasks:setup` | Set up a Notion task board for tracking |
-| `/notion:tasks:plan` | Plan a task from a Notion page URL |
-| `/notion:tasks:build` | Build tasks from a Notion page URL |
-| `/notion:tasks:explain-diff` | Generate a Notion doc explaining recent code changes |
 
 ### `gstack-*` — gstack toolchain (installed separately)
 
