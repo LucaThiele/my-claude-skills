@@ -109,25 +109,83 @@ Some skills require extra tools installed on the host machine:
 
 ### `gstack-*` — gstack toolchain (installed separately)
 
-[gstack](https://github.com/garrytan/gstack) provides 45 specialized commands acting as virtual roles (CEO, eng manager, designer, reviewer, QA, security officer, release engineer). Highlights:
+[gstack](https://github.com/garrytan/gstack) provides 45 specialized commands acting as virtual roles (CEO, eng manager, designer, reviewer, QA, security officer, release engineer). Grouped by purpose below.
 
+#### Planning & strategy
 | Skill | What it does |
 |---|---|
-| `gstack-office-hours` | Discuss what to build (CEO/PM mode) |
-| `gstack-autoplan` | Auto-generate an implementation plan from a description |
-| `gstack-plan-ceo-review` | Review a plan from a CEO/product perspective |
-| `gstack-plan-eng-review` | Review a plan from an engineering-architecture perspective |
-| `gstack-review` | Review code changes on the current branch |
-| `gstack-cso` | Security audit (OWASP Top 10 + STRIDE) |
-| `gstack-investigate` | Root-cause analysis on a bug or unknown behavior |
-| `gstack-qa` | QA test a live URL in a real browser |
-| `gstack-ship` | Commit + push + open PR |
-| `gstack-document-release` | Generate release docs |
-| `gstack-retro` | Retrospective on a project |
-| `gstack-browse` | Drive a real Chrome browser via gstack's compiled binary |
-| `gstack-upgrade` | Pull latest gstack, rebuild binaries, relink skills |
+| `gstack-office-hours` | YC-style brainstorming for new ideas — startup mode (6 forcing questions) or builder mode (design thinking) |
+| `gstack-autoplan` | Run the full plan-review gauntlet (CEO + design + eng + DX) automatically with a final approval gate |
+| `gstack-plan-ceo-review` | CEO/founder mode — challenge premises, expand or strip scope, find the 10-star product |
+| `gstack-plan-eng-review` | Eng manager mode — lock in architecture, data flow, edge cases, test coverage |
+| `gstack-plan-design-review` | Designer's eye on the plan — rate each design dimension 0–10 and fix toward 10 |
+| `gstack-plan-devex-review` | Developer experience plan review — personas, competitive benchmarks, friction tracing |
+| `gstack-plan-tune` | Tune AskUserQuestion sensitivity per skill; show declared vs. observed dev profile |
 
-Full list: see the [gstack README](https://github.com/garrytan/gstack).
+#### Design
+| Skill | What it does |
+|---|---|
+| `gstack-design-consultation` | Build a design system from scratch — produces `DESIGN.md` as project source of truth |
+| `gstack-design-shotgun` | Generate multiple AI design variants, comparison board, structured feedback |
+| `gstack-design-html` | Finalize an approved design as production HTML/CSS (Pretext-native, dynamic layouts) |
+| `gstack-design-review` | Live-site visual QA — finds inconsistency, AI slop, hierarchy issues, then fixes them |
+
+#### Code review & quality
+| Skill | What it does |
+|---|---|
+| `gstack-review` | Pre-landing PR review — SQL safety, LLM trust boundaries, structural issues |
+| `gstack-investigate` | Root-cause debugging — investigate, analyze, hypothesize, implement (no fixes without RCA) |
+| `gstack-codex` | OpenAI Codex CLI wrapper — independent review, adversarial challenge, or general consult |
+| `gstack-health` | Code quality dashboard — wraps type checker, linter, tests, dead-code, shell linter into a 0–10 score |
+| `gstack-cso` | Chief Security Officer mode — secrets, supply chain, CI/CD, LLM security, OWASP, STRIDE |
+| `gstack-learn` | Manage persistent project learnings across sessions (search, prune, export) |
+
+#### QA & testing
+| Skill | What it does |
+|---|---|
+| `gstack-qa` | Systematically QA test a web app and fix bugs found (atomic commits, before/after evidence) |
+| `gstack-qa-only` | Same as `qa` but report-only — no code changes |
+| `gstack-devex-review` | Live developer experience audit — actually navigate docs, time TTHW, screenshot errors |
+| `gstack-benchmark` | Page-performance regression detection — Core Web Vitals, bundle size, load time over time |
+| `gstack-benchmark-models` | Cross-model benchmark — same prompt through Claude / GPT / Gemini, compare cost & quality |
+
+#### Browser
+| Skill | What it does |
+|---|---|
+| `gstack-browse` | Fast headless Chromium for QA, dogfooding, screenshots — ~100ms per command |
+| `gstack-open-gstack-browser` | Launch a visible AI-controlled Chromium with sidebar extension and stealth |
+| `gstack-scrape` | Pull data from a web page — prototypes flow, returns JSON |
+| `gstack-skillify` | Codify a successful `/scrape` flow into a permanent reusable browser-skill |
+| `gstack-pair-agent` | Pair a remote AI agent (OpenClaw, Cursor, Codex) with your browser via a setup key |
+| `gstack-setup-browser-cookies` | Import cookies from your real Chromium into the headless browse session |
+
+#### Shipping & release
+| Skill | What it does |
+|---|---|
+| `gstack-ship` | Detect base branch, run tests, bump VERSION, update CHANGELOG, commit, push, open PR |
+| `gstack-land-and-deploy` | Merge the PR, wait for CI + deploy, verify production via canary checks |
+| `gstack-canary` | Post-deploy monitoring — console errors, perf regressions, anomaly alerts |
+| `gstack-landing-report` | Read-only dashboard of open PRs and which VERSION slot `/ship` would claim next |
+| `gstack-document-release` | Post-ship doc sync — README, ARCHITECTURE, CONTRIBUTING, CLAUDE.md, CHANGELOG |
+| `gstack-retro` | Weekly engineering retrospective with trend tracking and per-person breakdowns |
+| `gstack-make-pdf` | Markdown → publication-quality PDF (margins, page numbers, TOC, cover page) |
+
+#### Safety & session state
+| Skill | What it does |
+|---|---|
+| `gstack-careful` | Warn before destructive commands (`rm -rf`, `DROP TABLE`, force-push, `git reset --hard`) |
+| `gstack-freeze` | Restrict file edits to one directory for the session |
+| `gstack-unfreeze` | Lift the freeze boundary set by `gstack-freeze` |
+| `gstack-guard` | Combined safety mode — `careful` + `freeze` together |
+| `gstack-context-save` | Save working context (git state, decisions, remaining work) for later resume |
+| `gstack-context-restore` | Restore the most recent context saved by `gstack-context-save` |
+
+#### Setup & maintenance
+| Skill | What it does |
+|---|---|
+| `gstack-setup-deploy` | Auto-detect deploy platform (Fly, Render, Vercel, etc.) and write config to CLAUDE.md |
+| `gstack-setup-gbrain` | Install the gbrain CLI, init local PGLite or Supabase brain, register MCP |
+| `gstack-upgrade` | Pull latest gstack, rebuild binaries, relink skills, show what's new |
 
 ---
 
