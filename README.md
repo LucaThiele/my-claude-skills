@@ -1,6 +1,6 @@
 # my-claude-skills
 
-A personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) skills used across my work and personal Macs. 27 skills bundled in this repo, plus [gstack](https://github.com/garrytan/gstack) installed alongside as a separate toolchain.
+A personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) skills used across my work and personal Macs. 31 skills bundled in this repo, plus [gstack](https://github.com/garrytan/gstack) installed alongside as a separate toolchain.
 
 ## Naming convention
 
@@ -11,6 +11,7 @@ Skills are prefixed by source so I can always tell where each one comes from. Th
 | `gstack-*` | [gstack](https://github.com/garrytan/gstack) — Garry Tan's opinionated skill bundle (45 commands), installed separately |
 | `anthropic-*` | Anthropic's official skill bundle (Office docs, design, web, dev, writing) |
 | `n8n-*` | Companion skills bundled with [czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp) — kept as-is since `n8n-` is already a natural namespace |
+| `notion-*` | Notion's official skills from [makenotion/notion-cookbook](https://github.com/makenotion/notion-cookbook) — kept as-is since `notion-` is the upstream prefix |
 | `community-*` | Third-party / community-maintained skills |
 | *no prefix* | Skills I create myself (none yet) |
 
@@ -20,12 +21,13 @@ Skills are prefixed by source so I can always tell where each one comes from. Th
 |---|---|---|
 | Anthropic | 19 | This repo, `anthropic-*` folders |
 | n8n-mcp project | 7 | This repo, `n8n-*` folders |
+| Notion cookbook | 4 | This repo, `notion-*` folders |
 | Third-party | 1 | This repo, `community-nano-banana` folder |
 | gstack | 45 | Cloned separately from [garrytan/gstack](https://github.com/garrytan/gstack) |
 
 ## Installation
 
-### This bundle (the 27 skills in this repo)
+### This bundle (the 31 skills in this repo)
 
 ```bash
 git clone https://github.com/LucaThiele/my-claude-skills.git /tmp/my-skills
@@ -50,6 +52,7 @@ Some skills require extra tools installed on the host machine:
 
 - **community-nano-banana** — needs the Gemini CLI: `brew install gemini-cli`
 - **n8n-* skills** — most useful when paired with the [n8n MCP server](https://github.com/czlonkowski/n8n-mcp): `claude mcp add --scope user n8n -- npx -y n8n-mcp`
+- **notion-* skills** — require the [Notion MCP server](https://www.notion.com/help/notion-mcp) connected via `/mcp` (OAuth). Without it the skills can't read or write your workspace.
 - **anthropic-webapp-testing** — needs the Playwright MCP server
 - **anthropic-commit-push-pr** — needs the GitHub CLI (`gh`)
 - **gstack** — needs Bun (`brew install oven-sh/bun/bun`); setup also auto-installs Playwright Chromium and coreutils
@@ -106,6 +109,14 @@ Some skills require extra tools installed on the host machine:
 | `n8n-validation-expert` | Interpret validation errors/warnings; distinguish false positives from real fixes |
 | `n8n-code-javascript` | JavaScript in n8n Code nodes — `$input` / `$json` / `$node`, helpers, dates, batching |
 | `n8n-code-python` | Python in n8n Code nodes — use only when JS won't work |
+
+### `notion-*` — Notion knowledge base
+| Skill | What it does |
+|---|---|
+| `notion-knowledge-capture` | Turn a chat session into a structured Notion page (decisions, how-tos, FAQs) and link it from the right hub so it's discoverable |
+| `notion-meeting-intelligence` | Build an internal pre-read + external agenda for a meeting — pulls Notion context, layers in research, links both to the project |
+| `notion-research-documentation` | Cross-page research inside the workspace — synthesize findings from multiple Notion pages into a report with citations |
+| `notion-spec-to-implementation` | Break a Notion spec page into a tracked plan + task rows with bidirectional links between spec, plan, and tasks |
 
 ### `gstack-*` — gstack toolchain (installed separately)
 
